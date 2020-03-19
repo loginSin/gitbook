@@ -16,8 +16,10 @@ echo "** push doc to github"
 
 cd ../gitbook
 
+git pull
+
 git add .
 
-git commit -m $message
+git commit -m '${message}'
 
 git push
