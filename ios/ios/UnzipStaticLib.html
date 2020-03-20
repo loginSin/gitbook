@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Mac 关闭 rootless · GitBook</title>
+        <title>iOS 解压静态库 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -234,9 +234,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.5.1.1" data-path="RootLess.html">
+        <li class="chapter " data-level="1.5.1.1" data-path="../mac/RootLess.html">
             
-                <a href="RootLess.html">
+                <a href="../mac/RootLess.html">
             
                     
                     Mac 关闭 rootless
@@ -266,9 +266,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.2.1" data-path="../ios/UnzipStaticLib.html">
+        <li class="chapter active" data-level="1.5.2.1" data-path="UnzipStaticLib.html">
             
-                <a href="../ios/UnzipStaticLib.html">
+                <a href="UnzipStaticLib.html">
             
                     
                     iOS 解压静态库
@@ -319,7 +319,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >Mac 关闭 rootless</a>
+        <a href="../.." >iOS 解压静态库</a>
     </h1>
 </div>
 
@@ -334,28 +334,35 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="mac-&#x5173;&#x95ED;-rootless">Mac &#x5173;&#x95ED; rootless</h1>
-<p>mac 10.11 &#x4E4B;&#x540E;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;root&#x6765;&#x8BBF;&#x95EE;&#x4EE5;&#x4E0B;&#x8DEF;&#x5F84;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x51FA;&#x73B0;&#x90E8;&#x5206;&#x8F6F;&#x4EF6;&#x65E0;&#x6CD5;&#x5B89;&#x88C5;&#x7684;&#x60C5;&#x51B5;</p>
-<pre><code>/System
-/bin
-/sbin
-/usr (except /usr/local)
-</code></pre><p>&#x5982;&#x4F55;&#x53EF;&#x4EE5;&#x5173;&#x95ED; rootless &#xFF1F;</p>
-<pre><code>1.restart &#x7535;&#x8111;
+                                <h1 id="&#x89E3;&#x538B;-ios-&#x9759;&#x6001;&#x5E93;">&#x89E3;&#x538B; iOS &#x9759;&#x6001;&#x5E93;</h1>
+<blockquote>
+<p>.a &#x9759;&#x6001;&#x5E93;&#x7684;&#x5904;&#x7406;</p>
+</blockquote>
+<pre><code>1.&#x8FDB;&#x5165;.a&#x6240;&#x5728;&#x7684;&#x6587;&#x4EF6;&#x5939;
 
-2.&#x6309;command+r&#x8FDB;&#x5165;&#x5B89;&#x5168;&#x6A21;&#x5F0F;
+2.&#x67E5;&#x770B;.a&#x5305;&#x542B;&#x7684;&#x67B6;&#x6784;
 
-3.&#x627E;&#x5230;&#x5B9E;&#x7528;&#x5DE5;&#x5177;-&gt;&#x7EC8;&#x7AEF;&#xFF0C;&#x8F93;&#x5165;&#xFF1A;
+   &#x4F7F;&#x7528;&#x547D;&#x4EE4;&#xFF1A;file lib.a &#x6216;&#x8005; lipo -info lib.a
 
-csrutil disable #&#x5173;&#x95ED;rootless
+3.&#x7834;&#x89E3;&#x5FC5;&#x987B;&#x5265;&#x79BB;&#x51FA;&#x5355;&#x4E00;&#x67B6;&#x6784;&#x7684;&#x9759;&#x6001;&#x5E93;&#xFF0C;&#x6BD4;&#x5982;&#x6240;armv7&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x6682;&#x65F6;&#x5C06;&#x62BD;&#x51FA;&#x7684;armv7&#x547D;&#x540D;&#x4E3A;v7.a
 
-csrutil enable #&#x5F00;&#x542F;rootless
+   &#x4F7F;&#x7528;&#x547D;&#x4EE4;&#xFF1A;lipo lib.a -thin armv7 -output v7.a
 
-4.restart &#x7535;&#x8111;
+4.&#x6B64;&#x65F6;&#x6587;&#x4EF6;&#x5939;&#x4E2D;&#x5E94;&#x8BE5;&#x591A;&#x4E86;&#x4E00;&#x4E2A;v7.a&#xFF0C;&#x62BD;&#x79BB;.a&#x6587;&#x4EF6;&#x7684;object
 
-5.&#x4F7F;&#x7528;root&#x6765;&#x8FDB;&#x884C;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5EFA;&#x8BAE;&#x64CD;&#x4F5C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x518D;&#x628A;rootless&#x5F00;&#x542F;
+   &#x4F7F;&#x7528;&#x547D;&#x4EE4;&#xFF1A;ar -x v7.a
+
+5.&#x6587;&#x4EF6;&#x4E2D;&#x4F1A;&#x591A;&#x82E5;&#x5E72;.o&#x6587;&#x4EF6;&#xFF0C;&#x6BD4;&#x5982;&#x591A;&#x4E86;&#x4E00;&#x4E2A;View.o&#x6587;&#x4EF6;
+
+   &#x4F7F;&#x7528;&#x547D;&#x4EE4;&#xFF1A;nm View.o &gt; View.m
+
+   &#x7136;&#x540E;&#x770B;&#x770B;.m&#x7684;&#x5185;&#x5BB9;,&#x91CC;&#x9762;&#x53EA;&#x6709;&#x65B9;&#x6CD5;&#x7684;&#x58F0;&#x660E;&#x548C;&#x5C5E;&#x6027;
+</code></pre><blockquote>
+<p>.framework &#x9759;&#x6001;&#x5E93;&#x7684;&#x7684;&#x5904;&#x7406;</p>
+</blockquote>
+<pre><code>&#x8DDF; .a &#x5904;&#x7406;&#x65B9;&#x5F0F;&#x4E00;&#x81F4;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x628A; .a &#x6587;&#x4EF6;&#x6539;&#x4E3A; framework &#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;
 </code></pre><footer class="page-footer"><span class="copyright">&#x767B;&#x5F55;&#x65E0;&#x5948; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-03-20 16:08:45
+2020-03-20 16:25:22
 </span></footer>
                                 
                                 </section>
@@ -391,7 +398,7 @@ csrutil enable #&#x5F00;&#x542F;rootless
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Mac 关闭 rootless","level":"1.5.1.1","depth":3,"next":{"title":"iOS","level":"1.5.2","depth":2,"ref":"","articles":[{"title":"iOS 解压静态库","level":"1.5.2.1","depth":3,"path":"ios/ios/UnzipStaticLib.md","ref":"ios/ios/UnzipStaticLib.md","articles":[]}]},"previous":{"title":"Mac","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"Mac 关闭 rootless","level":"1.5.1.1","depth":3,"path":"ios/mac/RootLess.md","ref":"ios/mac/RootLess.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","auto-scroll-table","back-to-top-button","tbfed-pagefooter"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"登录无奈","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search":{},"auto-scroll-table":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"svg"},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ios/mac/RootLess.md","mtime":"2020-03-20T08:08:45.846Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T08:37:29.181Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"iOS 解压静态库","level":"1.5.2.1","depth":3,"previous":{"title":"iOS","level":"1.5.2","depth":2,"ref":"","articles":[{"title":"iOS 解压静态库","level":"1.5.2.1","depth":3,"path":"ios/ios/UnzipStaticLib.md","ref":"ios/ios/UnzipStaticLib.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","auto-scroll-table","back-to-top-button","tbfed-pagefooter"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"登录无奈","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search":{},"auto-scroll-table":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"svg"},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"ios/ios/UnzipStaticLib.md","mtime":"2020-03-20T08:25:22.394Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T08:37:29.181Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
