@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Git 多账号 · GitBook</title>
+        <title>Python shell 复杂参数处理 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -73,8 +73,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="CommonCommands.html" />
     
+    <link rel="prev" href="Param.html" />
     
 
     </head>
@@ -278,9 +278,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.4.1" data-path="MultipleAccounts.html">
+        <li class="chapter " data-level="1.4.1" data-path="../git/MultipleAccounts.html">
             
-                <a href="MultipleAccounts.html">
+                <a href="../git/MultipleAccounts.html">
             
                     
                     Git 多账号
@@ -291,9 +291,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="CommonCommands.html">
+        <li class="chapter " data-level="1.4.2" data-path="../git/CommonCommands.html">
             
-                <a href="CommonCommands.html">
+                <a href="../git/CommonCommands.html">
             
                     
                     Git 常用命令
@@ -490,9 +490,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.1" data-path="../python/Dir.html">
+        <li class="chapter " data-level="1.7.1" data-path="Dir.html">
             
-                <a href="../python/Dir.html">
+                <a href="Dir.html">
             
                     
                     Python 目录操作
@@ -503,9 +503,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.2" data-path="../python/Param.html">
+        <li class="chapter " data-level="1.7.2" data-path="Param.html">
             
-                <a href="../python/Param.html">
+                <a href="Param.html">
             
                     
                     Python shell 简单参数处理
@@ -516,9 +516,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.3" data-path="../python/ParamFlag.html">
+        <li class="chapter active" data-level="1.7.3" data-path="ParamFlag.html">
             
-                <a href="../python/ParamFlag.html">
+                <a href="ParamFlag.html">
             
                     
                     Python shell 复杂参数处理
@@ -564,7 +564,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Git 多账号</a>
+        <a href=".." >Python shell 复杂参数处理</a>
     </h1>
 </div>
 
@@ -579,37 +579,67 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x521B;&#x5EFA;&#x591A;&#x4E2A;-git-&#x8D26;&#x53F7;">&#x521B;&#x5EFA;&#x591A;&#x4E2A; git &#x8D26;&#x53F7;</h1>
-<p>&#x5982;&#x4F55;&#x4F7F;&#x81EA;&#x5DF1;&#x672C;&#x5730;&#x7535;&#x8111;&#x540C;&#x65F6;&#x5B58;&#x5728;&#x591A;&#x4E2A; git &#x8D26;&#x53F7;&#xFF1F;&#x5982; github&#xFF0C;gitee&#xFF0C;gitlab&#xFF1F;</p>
-<h2 id="1&#x751F;&#x6210;&#x591A;&#x4E2A;-ssh-&#x79D8;&#x94A5;">1.&#x751F;&#x6210;&#x591A;&#x4E2A; ssh &#x79D8;&#x94A5;</h2>
-<p>&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#x7684; 163 &#x90AE;&#x7BB1;&#x66F4;&#x6362;&#x4E3A;&#x81EA;&#x5DF1;&#x7684;&#x90AE;&#x7BB1;</p>
-<pre><code>ssh-keygen -t rsa -C &quot;testgithub@163.com&quot; -f ~/.ssh/github-rsa
-</code></pre><pre><code>ssh-keygen -t rsa -C &quot;testgitlab@163.com&quot; -f ~/.ssh/gitlab-rsa
-</code></pre><pre><code>ssh-keygen -t rsa -C &quot;testgitee@163.com&quot; -f ~/.ssh/gitee-rsa
-</code></pre><h2 id="2&#x914D;&#x7F6E;&#x4E0D;&#x540C;&#x7684;-git">2.&#x914D;&#x7F6E;&#x4E0D;&#x540C;&#x7684; git</h2>
-<p>&#x5728;&#x7CFB;&#x7EDF;&#x6839;&#x76EE;&#x5F55;&#x7684; <code>.ssh</code> &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA;&#x540D;&#x5B57;&#x4E3A; <code>config</code> &#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x4EFF;&#x7167;&#x4E0B;&#x9762;&#x586B;&#x5199;&#x914D;&#x7F6E;</p>
-<pre><code># github
+                                <h1 id="&#x5E26;&#x53C2;-python-&#x811A;&#x672C;">&#x5E26;&#x53C2; python &#x811A;&#x672C;</h1>
+<pre><code>usage: tool_tmp.py -i &lt;ip&gt; -p &lt;port&gt;
 
-Host github.com
+&#x5411;&#x811A;&#x672C;&#x4E2D;&#x4F20;&#x9012;&#x53C2;&#x6570;&#xFF1A;IP&#x5730;&#x5740;&#x548C;&#x7AEF;&#x53E3;
 
-    HostName github.com
+#coding=utf-8
 
-    PreferredAuthentications publickey
+import sys,getopt
 
-    IdentityFile ~/.ssh/github-rsa
+IP_KEY=&apos;ip&apos;
+PORT_KEY=&apos;port&apos;
 
-# gitlab
+def main(argv):
+    # &#x63A5;&#x6536;&#x7684;&#x53C2;&#x6570;&#xFF1A;
+    # &#x77ED;&#x53C2;&#xFF1A;    
+    #                -h &#xFF08;&#x65E0;&#x53C2;&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x9762;&#x6CA1;&#x6709; : &#xFF09;
+    #                -i &lt;ip&gt; &#xFF08;&#x5E26;&#x53C2;&#xFF1A;&#x6240;&#x4EE5;&#x540E;&#x9762;&#x6709; : &#xFF09;
+    #                -p &lt;port&gt;&#xFF08;&#x5E26;&#x53C2;&#xFF1A;&#x6240;&#x4EE5;&#x540E;&#x9762;&#x6709; : &#xFF09;
 
-Host gitlab.com
+    # &#x957F;&#x53C2;&#xFF1A;
+    #                --help &#xFF08;&#x65E0;&#x53C2;&#xFF0C;&#x6240;&#x4EE5;&#x540E;&#x9762;&#x6CA1;&#x6709; = &#xFF09;
+    #                --ip=&lt;ip&gt;&#xFF08;&#x5E26;&#x53C2;&#xFF1A;&#x6240;&#x4EE5;&#x540E;&#x9762;&#x6709; = &#xFF09;
+    #                --port=&lt;port&gt;&#xFF08;&#x5E26;&#x53C2;&#xFF1A;&#x6240;&#x4EE5;&#x540E;&#x9762;&#x6709; = &#xFF09;
+    try:
+        options,args = getopt.getopt(argv,&quot;hi:p:&quot;,[&quot;help&quot;,&quot;ip=&quot;,&quot;port=&quot;])
+    except getopt.GetoptError:
+        usage()
+        sys.exit(2)
 
-    HostName gitlab.com
+    param = {}
+    for opt ,arg in options:
+        # &#x5982;&#x679C;&#x662F; -h &#x6216;&#x8005; --help &#xFF0C;&#x8BF4;&#x660E;&#x662F;&#x67E5;&#x770B;&#x5E2E;&#x52A9;
+        if opt in (&quot;-h&quot;,&quot;--help&quot;):
+            usage()
+        # &#x5982;&#x679C;&#x662F; -i &#x6216;&#x8005; --ip &#xFF0C;&#x8BF4;&#x660E;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#x662F; ip &#x5730;&#x5740;
+        if opt in (&quot;-i&quot;,&quot;--ip&quot;):
+            param[IP_KEY] = arg
+        # &#x5982;&#x679C;&#x662F; -p &#x6216;&#x8005; --port &#xFF0C;&#x8BF4;&#x660E;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;&#x662F; &#x7AEF;&#x53E3;
+        if opt in (&quot;-p&quot;,&quot;--port&quot;):
+            param[PORT_KEY] = arg
+    #&#x81F3;&#x6B64; &#x53C2;&#x6570;&#x89E3;&#x6790;&#x5B8C;&#x6BD5;
 
-    PreferredAuthentications publickey
+    #&#x5F00;&#x59CB;&#x5904;&#x7406;&#x53C2;&#x6570;
+    print(&quot;ip = %s ; port = %s&quot; %(__get_safe_value(param,IP_KEY),__get_safe_value(param,PORT_KEY)))
 
-    IdentityFile ~/.ssh/gitlab-rsa
-</code></pre><p>&#x5176;&#x4E2D; <code>Host</code>,<code>HostName</code> &#x548C; <code>IdentityFile</code> &#x5982;&#x5B9E;&#x586B;&#x5199; </p>
-<footer class="page-footer"><span class="copyright">&#x767B;&#x5F55;&#x65E0;&#x5948; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-03-21 11:00:10
+def usage():
+    print(&apos;%s -i &lt;ip&gt; -p &lt;port&gt;&apos; % sys.argv[0])
+
+def __get_safe_value(dict,key):
+    if dict.has_key(key):
+        return dict[key]
+    return None
+
+if __name__ == &apos;__main__&apos;:
+    if len(sys.argv) &lt; 2:
+        usage()
+        sys.exit(2)
+
+    main(sys.argv[1:])
+</code></pre><footer class="page-footer"><span class="copyright">&#x767B;&#x5F55;&#x65E0;&#x5948; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2020-03-21 13:09:56
 </span></footer>
                                 
                                 </section>
@@ -637,10 +667,10 @@ Host gitlab.com
 
             
                 
-                
-                <a href="CommonCommands.html" class="navigation navigation-next navigation-unique" aria-label="Next page: Git 常用命令">
-                    <i class="fa fa-angle-right"></i>
+                <a href="Param.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Python shell 简单参数处理">
+                    <i class="fa fa-angle-left"></i>
                 </a>
+                
                 
             
         
@@ -649,7 +679,7 @@ Host gitlab.com
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Git 多账号","level":"1.4.1","depth":2,"next":{"title":"Git 常用命令","level":"1.4.2","depth":2,"path":"git/CommonCommands.md","ref":"git/CommonCommands.md","articles":[]},"previous":{"title":"Git","level":"1.4","depth":1,"ref":"","articles":[{"title":"Git 多账号","level":"1.4.1","depth":2,"path":"git/MultipleAccounts.md","ref":"git/MultipleAccounts.md","articles":[]},{"title":"Git 常用命令","level":"1.4.2","depth":2,"path":"git/CommonCommands.md","ref":"git/CommonCommands.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","auto-scroll-table","back-to-top-button","tbfed-pagefooter","expandable-chapters"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"登录无奈","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search":{},"auto-scroll-table":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"svg"},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"git/MultipleAccounts.md","mtime":"2020-03-21T03:00:10.733Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-21T05:12:18.154Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Python shell 复杂参数处理","level":"1.7.3","depth":2,"previous":{"title":"Python shell 简单参数处理","level":"1.7.2","depth":2,"path":"python/Param.md","ref":"python/Param.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","auto-scroll-table","back-to-top-button","tbfed-pagefooter","expandable-chapters"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"登录无奈","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search":{},"auto-scroll-table":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"svg"},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"python/ParamFlag.md","mtime":"2020-03-21T05:09:56.962Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-21T05:12:18.154Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
