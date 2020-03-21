@@ -22,6 +22,6 @@ echo "** push doc to github"
 
 git add .
 
-git commit -m '${message}'
+git commit -m "${message}"
 
 git push
