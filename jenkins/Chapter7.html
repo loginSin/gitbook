@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Jenkins 3.打包参数原理 · GitBook</title>
+        <title>Jenkins 7.参数读取 git 分支 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -76,7 +76,7 @@
     <link rel="next" href="Chapter4.html" />
     
     
-    <link rel="prev" href="Chapter2.html" />
+    <link rel="prev" href="Chapter6.html" />
     
 
     </head>
@@ -647,7 +647,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.8.4" data-path="Chapter3.html">
+        <li class="chapter " data-level="1.8.4" data-path="Chapter3.html">
             
                 <a href="Chapter3.html">
             
@@ -699,7 +699,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.8" data-path="Chapter7.html">
+        <li class="chapter active" data-level="1.8.8" data-path="Chapter7.html">
             
                 <a href="Chapter7.html">
             
@@ -760,7 +760,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Jenkins 3.打包参数原理</a>
+        <a href=".." >Jenkins 7.参数读取 git 分支</a>
     </h1>
 </div>
 
@@ -775,60 +775,34 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="jenkins-3&#x6253;&#x5305;&#x53C2;&#x6570;&#x539F;&#x7406;">Jenkins 3.&#x6253;&#x5305;&#x53C2;&#x6570;&#x539F;&#x7406;</h1>
-<p>&#x901A;&#x8FC7;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x6863;&#x4E86;&#x89E3;&#x5230;&#x8BBE;&#x7F6E;&#x597D;&#x53C2;&#x6570;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x811A;&#x672C;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x672C;&#x7BC7;&#x5C31;&#x6765;&#x8BB2;&#x89E3;&#x4E00;&#x4E0B;&#x80CC;&#x540E;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;</p>
-<p>&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x53EA;&#x9488;&#x5BF9; <code>Linux &#x7CFB;&#x7EDF;</code> &#x548C; <code>macOS &#x7CFB;&#x7EDF;</code></p>
-<p>&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;&#x4F9D;&#x6B21;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;</p>
-<pre><code>export ver=&quot;1.2.3&quot;
-echo $ver
-</code></pre><p>&#x5C31;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7EC8;&#x7AEF;&#x8F93;&#x51FA;&#x4E86; 1.2.3 &#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x5C06; Jenkins &#x8BBE;&#x7F6E;&#x7684;&#x53C2;&#x6570;&#x7684;&#x5E76;&#x4F7F;&#x7528;&#x7684;&#x8FC7;&#x7A0B;&#x7B80;&#x5355;&#x7406;&#x89E3;&#x4E3A; <code>Jenkins &#x4F1A;&#x628A;&#x6240;&#x6709;&#x53C2;&#x6570;&#x901A;&#x8FC7;</code>export<code>&#x547D;&#x4EE4;</code>&#x4FDD;&#x5B58;&#x5230;&#x7CFB;&#x7EDF;&#x5185;&#x90E8;&#xFF0C;shell &#x811A;&#x672C;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x53C2;&#x6570;&#x540D;&#x83B7;&#x53D6;&#x8BE5;&#x53C2;&#x6570;&#x7684;&#x503C;</p>
-<h2 id="&#x5404;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x7684;&#x4F7F;&#x7528;">&#x5404;&#x7C7B;&#x578B;&#x53C2;&#x6570;&#x7684;&#x4F7F;&#x7528;</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">&#x53C2;&#x6570;&#x7C7B;&#x578B;</th>
-<th style="text-align:left">&#x53D8;&#x91CF;&#x540D;</th>
-<th style="text-align:left">&#x4F7F;&#x7528;</th>
-<th style="text-align:left">&#x8BF4;&#x660E;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">String</td>
-<td style="text-align:left">Version</td>
-<td style="text-align:left">&#x53C2;&#x89C1;&#x4E0B;&#x65B9;&#x4F7F;&#x7528;</td>
-<td style="text-align:left">&#x7248;&#x672C;&#x53F7;</td>
-</tr>
-<tr>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:left">Opened</td>
-<td style="text-align:left">&#x53C2;&#x89C1;&#x4E0B;&#x65B9;&#x4F7F;&#x7528;</td>
-<td style="text-align:left">&#x662F;&#x5426;&#x6253;&#x5F00;&#x5F00;&#x5173;</td>
-</tr>
-<tr>
-<td style="text-align:left">Choice</td>
-<td style="text-align:left">Env</td>
-<td style="text-align:left">&#x53C2;&#x89C1;&#x4E0B;&#x65B9;&#x4F7F;&#x7528;</td>
-<td style="text-align:left">&#x9009;&#x62E9;&#x6253;&#x5305;&#x73AF;&#x5883;&#xFF0C;&#x5982; Dev&#xFF0C;Test&#xFF0C;Online</td>
-</tr>
-</tbody>
-</table>
-<pre><code>String &#x4F7F;&#x7528;
-ver=$Version
-echo $ver
-</code></pre><pre><code>Boolean &#x4F7F;&#x7528;
-if [ ${Opened} = &quot;true&quot; ]; then
-    echo &quot;opened&quot;
-fi
-</code></pre><pre><code>Choice &#x4F7F;&#x7528;
-if [ ${Env} = &quot;Dev&quot; ]; then
-    echo &quot;&#x5F00;&#x53D1;&#x73AF;&#x5883;&quot;
-fi
-</code></pre><p>&#x76F8;&#x5173;&#x8FDE;&#x63A5;</p>
-<p><a href="https://www.runoob.com/linux/linux-comm-export.html" target="_blank">export &#x547D;&#x4EE4;</a></p>
-<p><a href="https://www.runoob.com/linux/linux-shell-variable.html" target="_blank">shell &#x53D8;&#x91CF;</a> </p>
-<footer class="page-footer"><span class="copyright">&#x767B;&#x5F55;&#x65E0;&#x5948; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-04-30 15:19:39
+                                <h1 id="jenkins-7&#x53C2;&#x6570;&#x8BFB;&#x53D6;-git-&#x5206;&#x652F;">Jenkins 7.&#x53C2;&#x6570;&#x8BFB;&#x53D6; git &#x5206;&#x652F;</h1>
+<p>&#x5982;&#x679C;&#x6709;&#x53C2;&#x6570;&#x662F; git &#x4ED3;&#x5E93;&#x5206;&#x652F;&#xFF0C;&#x60F3;&#x8981;&#x52A8;&#x6001;&#x83B7;&#x53D6;&#xFF0C;&#x600E;&#x4E48;&#x5904;&#x7406;&#xFF1F;</p>
+<p>&#x8FD9;&#x4E2A;&#x9700;&#x8981;&#x4E0B;&#x8F7D; <code>Extended Choice Parameter</code> &#x63D2;&#x4EF6;</p>
+<p>&#x9700;&#x8981;&#x8BF4;&#x660E;&#xFF0C;&#x8FDB;&#x884C;&#x5982;&#x4E0B;&#x914D;&#x7F6E;&#x4E4B;&#x540E;&#xFF0C;Jenkins &#x6253;&#x5305;&#x9875;&#x9762;&#x4F1A;&#x5148;&#x901A;&#x8FC7; Groovy &#x811A;&#x672C;&#x8BFB;&#x53D6; git &#x5206;&#x652F;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x6BD4;&#x9759;&#x6001;&#x53C2;&#x6570;&#x52A0;&#x8F7D;&#x8981;&#x6162;&#x5F88;&#x591A;&#xFF0C;&#x66F4;&#x4E25;&#x91CD;&#x7684;&#x5982;&#x679C; git &#x4ED3;&#x5E93;&#x6302;&#x4E86;&#xFF0C;&#x53EF;&#x80FD;&#x5C31;&#x6CA1;&#x6CD5;&#x6253;&#x5F00; Jenkins &#x6253;&#x5305;&#x9875;&#x9762;</p>
+<p>1.&#x4E0B;&#x8F7D;&#x63D2;&#x4EF6;&#xFF0C;&#x4E0B;&#x8F7D;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#x91CD;&#x542F; Jenkins</p>
+<p><img src="../images/jenkins/chapter7.1.png" alt=""></p>
+<p>2.&#x914D;&#x7F6E;&#x53C2;&#x6570;</p>
+<p><img src="../images/jenkins/chapter7.2.png" alt=""></p>
+<p><img src="../images/jenkins/chapter7.3.png" alt=""></p>
+<p>&#x5176;&#x4E2D;&#x7684; Groovy &#x811A;&#x672C;&#x5185;&#x5BB9;&#x5982;&#x4E0B;</p>
+<pre><code>def gitURL = &quot;git@github.com:loginSin/gitbook_src.git&quot;
+def command = &quot;git ls-remote -h $gitURL&quot;
+
+def proc = command.execute()
+proc.waitFor()         
+
+if ( proc.exitValue() != 0 ) {
+    return  [&quot;dev&quot;, &quot;master&quot;]
+}     
+
+def branches = proc.in.text.readLines().collect {
+    it.replaceAll(/[a-z0-9]*\trefs\/heads\//, &apos;&apos;) 
+}
+branches -= [&quot;dev&quot;, &quot;master&quot;]
+branches = [&quot;dev&quot;, &quot;master&quot;] + branches
+return branches.join(&quot;,&quot;)
+</code></pre><footer class="page-footer"><span class="copyright">&#x767B;&#x5F55;&#x65E0;&#x5948; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2020-04-30 18:15:02
 </span></footer>
                                 
                                 </section>
@@ -856,12 +830,12 @@ fi
 
             
                 
-                <a href="Chapter2.html" class="navigation navigation-prev " aria-label="Previous page: Jenkins 2.配置打包参数">
+                <a href="Chapter6.html" class="navigation navigation-prev " aria-label="Previous page: Jenkins 6.保存输出">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Chapter4.html" class="navigation navigation-next " aria-label="Next page: Jenkins 4.内部目录讲解">
+                <a href="Chapter4.html" class="navigation navigation-next " aria-label="Next page: Jenkins 8.编译失败排查">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -872,7 +846,7 @@ fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Jenkins 3.打包参数原理","level":"1.8.4","depth":2,"next":{"title":"Jenkins 4.内部目录讲解","level":"1.8.5","depth":2,"path":"jenkins/Chapter4.md","ref":"jenkins/Chapter4.md","articles":[]},"previous":{"title":"Jenkins 2.配置打包参数","level":"1.8.3","depth":2,"path":"jenkins/Chapter2.md","ref":"jenkins/Chapter2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","auto-scroll-table","back-to-top-button","tbfed-pagefooter","expandable-chapters"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"登录无奈","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search":{},"auto-scroll-table":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"svg"},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"jenkins/Chapter3.md","mtime":"2020-04-30T07:19:39.696Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T10:17:13.404Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Jenkins 7.参数读取 git 分支","level":"1.8.8","depth":2,"next":{"title":"Jenkins 8.编译失败排查","level":"1.8.9","depth":2,"path":"jenkins/Chapter4.md","ref":"jenkins/Chapter4.md","articles":[]},"previous":{"title":"Jenkins 6.保存输出","level":"1.8.7","depth":2,"path":"jenkins/Chapter6.md","ref":"jenkins/Chapter6.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","auto-scroll-table","back-to-top-button","tbfed-pagefooter","expandable-chapters"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"登录无奈","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search":{},"auto-scroll-table":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"svg"},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"jenkins/Chapter7.md","mtime":"2020-04-30T10:15:02.262Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T10:17:13.404Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
