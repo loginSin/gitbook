@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Jenkins 打包参数原理 · GitBook</title>
+        <title>Jenkins 3.打包参数原理 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -72,6 +72,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
+    
+    <link rel="next" href="Chapter3.html" />
     
     
     <link rel="prev" href="Chapter2.html" />
@@ -624,7 +626,7 @@
                 <a href="Chapter1.html">
             
                     
-                    Jenkins 创建简单项目
+                    Jenkins 1.创建简单项目
             
                 </a>
             
@@ -637,7 +639,7 @@
                 <a href="Chapter2.html">
             
                     
-                    Jenkins 配置打包参数
+                    Jenkins 2.配置打包参数
             
                 </a>
             
@@ -650,7 +652,20 @@
                 <a href="Chapter3.html">
             
                     
-                    Jenkins 打包参数原理
+                    Jenkins 3.打包参数原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.8.5" data-path="Chapter3.html">
+            
+                <a href="Chapter3.html">
+            
+                    
+                    Jenkins 4.内部目录讲解
             
                 </a>
             
@@ -693,7 +708,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Jenkins 打包参数原理</a>
+        <a href=".." >Jenkins 3.打包参数原理</a>
     </h1>
 </div>
 
@@ -708,7 +723,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="jenkins-&#x6253;&#x5305;&#x53C2;&#x6570;&#x539F;&#x7406;">Jenkins &#x6253;&#x5305;&#x53C2;&#x6570;&#x539F;&#x7406;</h1>
+                                <h1 id="jenkins-3&#x6253;&#x5305;&#x53C2;&#x6570;&#x539F;&#x7406;">Jenkins 3.&#x6253;&#x5305;&#x53C2;&#x6570;&#x539F;&#x7406;</h1>
 <p>&#x901A;&#x8FC7;&#x4E0A;&#x4E00;&#x7BC7;&#x6587;&#x6863;&#x4E86;&#x89E3;&#x5230;&#x8BBE;&#x7F6E;&#x597D;&#x53C2;&#x6570;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x811A;&#x672C;&#x4E2D;&#x4F7F;&#x7528;&#xFF0C;&#x672C;&#x7BC7;&#x5C31;&#x6765;&#x8BB2;&#x89E3;&#x4E00;&#x4E0B;&#x80CC;&#x540E;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;</p>
 <p>&#x4EE5;&#x4E0B;&#x5185;&#x5BB9;&#x53EA;&#x9488;&#x5BF9; <code>Linux &#x7CFB;&#x7EDF;</code> &#x548C; <code>macOS &#x7CFB;&#x7EDF;</code></p>
 <p>&#x6253;&#x5F00;&#x7EC8;&#x7AEF;&#xFF0C;&#x4F9D;&#x6B21;&#x8F93;&#x5165;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;</p>
@@ -761,7 +776,7 @@ fi
 <p><a href="https://www.runoob.com/linux/linux-comm-export.html" target="_blank">export &#x547D;&#x4EE4;</a></p>
 <p><a href="https://www.runoob.com/linux/linux-shell-variable.html" target="_blank">shell &#x53D8;&#x91CF;</a> </p>
 <footer class="page-footer"><span class="copyright">&#x767B;&#x5F55;&#x65E0;&#x5948; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
-2020-04-30 15:13:15
+2020-04-30 15:19:39
 </span></footer>
                                 
                                 </section>
@@ -789,10 +804,14 @@ fi
 
             
                 
-                <a href="Chapter2.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Jenkins 配置打包参数">
+                <a href="Chapter2.html" class="navigation navigation-prev " aria-label="Previous page: Jenkins 2.配置打包参数">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="Chapter3.html" class="navigation navigation-next " aria-label="Next page: Jenkins 4.内部目录讲解">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -801,7 +820,7 @@ fi
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Jenkins 打包参数原理","level":"1.8.4","depth":2,"previous":{"title":"Jenkins 配置打包参数","level":"1.8.3","depth":2,"path":"jenkins/Chapter2.md","ref":"jenkins/Chapter2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","auto-scroll-table","back-to-top-button","tbfed-pagefooter","expandable-chapters"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"登录无奈","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search":{},"auto-scroll-table":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"svg"},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"jenkins/Chapter3.md","mtime":"2020-04-30T07:13:15.511Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T07:14:20.188Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Jenkins 3.打包参数原理","level":"1.8.4","depth":2,"next":{"title":"Jenkins 4.内部目录讲解","level":"1.8.5","depth":2,"path":"jenkins/Chapter3.md","ref":"jenkins/Chapter3.md","articles":[]},"previous":{"title":"Jenkins 2.配置打包参数","level":"1.8.3","depth":2,"path":"jenkins/Chapter2.md","ref":"jenkins/Chapter2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["uml","auto-scroll-table","back-to-top-button","tbfed-pagefooter","expandable-chapters"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"登录无奈","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"search":{},"auto-scroll-table":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"uml":{"format":"svg"},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"jenkins/Chapter3.md","mtime":"2020-04-30T07:19:39.696Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-30T07:22:35.780Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
